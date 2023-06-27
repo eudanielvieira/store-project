@@ -35,7 +35,7 @@ export class ShoppingCartsController {
     return await this.shoppingCartsService.getCart(cartId, userId);
   }
 
-  @Put('add-product/cart-id/:cartId/user-id/:userId')
+  @Put('cart-id/:cartId/user-id/:userId')
   @ApiOperation({
     summary: 'Add a Product from a Shopping Cart',
   })

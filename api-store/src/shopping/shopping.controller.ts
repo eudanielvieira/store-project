@@ -84,7 +84,7 @@ export class ShoppingController {
     return await this.cartService.getCart(cartId, userId);
   }
 
-  @Put('cart/add-product/cart-id/:cartId/user-id/:userId')
+  @Put('cart/cart-id/:cartId/user-id/:userId')
   @UseGuards(JwtAuthGuard)
   @ApiOperation({
     summary: 'Add a Product from a Shopping Cart',
