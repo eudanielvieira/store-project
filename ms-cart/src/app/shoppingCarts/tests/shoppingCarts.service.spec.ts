@@ -84,7 +84,7 @@ describe('ShoppingCartsService', () => {
       const result = await service.getCart('cart123', 'user123');
 
       expect(cartRepository.findOne).toHaveBeenCalledWith({
-        where: { id: 'cart123', userId: 'user123' },
+        where: { id: 'cart123' },
         relations: ['cartProducts'],
       });
       expect(result).toEqual(cart);
@@ -99,7 +99,7 @@ describe('ShoppingCartsService', () => {
         NotFoundException,
       );
       expect(cartRepository.findOne).toHaveBeenCalledWith({
-        where: { id: cartId, userId: userId },
+        where: { id: cartId },
         relations: ['cartProducts'],
       });
     });

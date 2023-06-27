@@ -28,7 +28,7 @@ export class ShoppingCartsService {
 
   async getCart(cartId: string, userId: string) {
     const cart = await this.cartRepository.findOne({
-      where: { id: cartId, userId: userId },
+      where: { id: cartId }, //TODO: add userIdc
       relations: ['cartProducts'],
     });
 
