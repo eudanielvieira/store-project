@@ -5,6 +5,7 @@ import {
   Get,
   Param,
   Post,
+  Put,
   UseGuards,
 } from '@nestjs/common';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
@@ -45,7 +46,7 @@ export class ShoppingController {
     return await this.productsService.createProduct(product);
   }
 
-  @Post('products/:id')
+  @Put('products/:id')
   @UseGuards(JwtAuthGuard)
   @ApiOperation({ summary: 'Update product by id' })
   async updateProduct(
@@ -62,7 +63,7 @@ export class ShoppingController {
     return await this.productsService.deleteProduct(id);
   }
 
-  @Get('cart/user-id/:userId')
+  @Post('cart/user-id/:userId')
   @UseGuards(JwtAuthGuard)
   @ApiOperation({
     summary: 'Create a Shopping Cart',
@@ -83,7 +84,7 @@ export class ShoppingController {
     return await this.cartService.getCart(cartId, userId);
   }
 
-  @Post('cart/add-product/cart-id/:cartId/user-id/:userId')
+  @Put('cart/add-product/cart-id/:cartId/user-id/:userId')
   @UseGuards(JwtAuthGuard)
   @ApiOperation({
     summary: 'Add a Product from a Shopping Cart',

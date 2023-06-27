@@ -1,4 +1,12 @@
-import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Put,
+} from '@nestjs/common';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { ShoppingCartsService } from './shoppingCarts.service';
 import { ProductDTO } from './dtos/product.dto';
@@ -8,7 +16,7 @@ import { ProductDTO } from './dtos/product.dto';
 export class ShoppingCartsController {
   constructor(private shoppingCartsService: ShoppingCartsService) {}
 
-  @Get('user-id/:userId')
+  @Post('user-id/:userId')
   @ApiOperation({
     summary: 'Create a Shopping Cart',
   })
@@ -27,7 +35,7 @@ export class ShoppingCartsController {
     return await this.shoppingCartsService.getCart(cartId, userId);
   }
 
-  @Post('add-product/cart-id/:cartId/user-id/:userId')
+  @Put('add-product/cart-id/:cartId/user-id/:userId')
   @ApiOperation({
     summary: 'Add a Product from a Shopping Cart',
   })

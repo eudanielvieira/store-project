@@ -42,12 +42,13 @@ start "" "C:\Program Files\Git\bin\bash.exe" -c "cd ms-products; ./startup-ms-pr
 start "" "C:\Program Files\Git\bin\bash.exe" -c "cd ms-cart; ./startup-ms-cart.sh"
 start "" "C:\Program Files\Git\bin\bash.exe" -c "cd api-store; ./startup-api-store.sh"
 
-start "" "C:\Program Files\Git\bin\bash.exe" -c "cd ms-products; yarn test:cov --watchAll=true"
-start "" "C:\Program Files\Git\bin\bash.exe" -c "cd ms-cart; yarn test:cov --watchAll=true"
-start "" "C:\Program Files\Git\bin\bash.exe" -c "cd api-store; yarn test:cov --watchAll=true"
 
 docker-compose up -d
 
 sleep 5
+
+start "" "C:\Program Files\Git\bin\bash.exe" -c "cd ms-products; yarn test:cov --watchAll=true"
+start "" "C:\Program Files\Git\bin\bash.exe" -c "cd ms-cart; yarn test:cov --watchAll=true"
+start "" "C:\Program Files\Git\bin\bash.exe" -c "cd api-store; yarn test:cov --watchAll=true"
 
 docker exec -it postgres_cart createdb -U postgres shopping_cart

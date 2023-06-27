@@ -4,18 +4,18 @@ import { CartProductDTO } from './dtos/cart-product.dto';
 
 @Injectable()
 export class CartService {
-  apiProductsUrl: string;
+  apiCartUrl: string;
   httpService: HttpService;
 
   constructor() {
     this.httpService = new HttpService();
-    this.apiProductsUrl = process.env.MS_CART_URL;
+    this.apiCartUrl = process.env.MS_CART_URL;
   }
 
   async createEmptyCart(userId: string) {
     try {
       const response = await this.httpService.axiosRef.post(
-        `${this.apiProductsUrl}/carts/user-id/${userId}`,
+        `${this.apiCartUrl}/carts/user-id/${userId}`,
       );
       return response.data;
     } catch (error) {
@@ -26,7 +26,7 @@ export class CartService {
   async getCart(cartId: string, userId: string) {
     try {
       const response = await this.httpService.axiosRef.get(
-        `${this.apiProductsUrl}/carts/cart-id/${cartId}/user-id/${userId}`,
+        `${this.apiCartUrl}/carts/cart-id/${cartId}/user-id/${userId}`,
       );
       return response.data;
     } catch (error) {
@@ -40,8 +40,8 @@ export class CartService {
     productDTO: CartProductDTO,
   ) {
     try {
-      const response = await this.httpService.axiosRef.post(
-        `${this.apiProductsUrl}/carts/cart-id/${cartId}/user-id/${userId}`,
+      const response = await this.httpService.axiosRef.put(
+        `${this.apiCartUrl}/carts/cart-id/${cartId}/user-id/${userId}`,
         productDTO,
       );
       return response.data;
@@ -57,7 +57,7 @@ export class CartService {
   ) {
     try {
       const response = await this.httpService.axiosRef.delete(
-        `${this.apiProductsUrl}/carts/cart-id/${cartId}/user-id/${userId}/product-id/${productId}`,
+        `${this.apiCartUrl}/carts/cart-id/${cartId}/user-id/${userId}/product-id/${productId}`,
       );
       return response.data;
     } catch (error) {
