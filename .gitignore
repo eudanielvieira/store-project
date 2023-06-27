@@ -1,0 +1,30 @@
+# compiled output
+/ms-cart/dist
+/ms-cart/node_modules
+
+/ms-products/dist
+/ms-products/node_modules
+
+/api-store/dist
+/api-store/node_modules
+
+# OS
+/ms-cart/.DS_Store
+/ms-products/.DS_Store
+/api-store/.DS_Store
+
+# Tests
+/ms-cart/coverage
+/ms-cart/.nyc_output
+
+/ms-products/coverage
+/ms-products/.nyc_output
+
+/api-store/coverage
+/api-store/.nyc_output
+
+
+#envs
+/ms-cart/.env
+/ms-products/.env
+/api-store/.env
