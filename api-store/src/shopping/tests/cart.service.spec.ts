@@ -28,7 +28,7 @@ describe('CartService', () => {
       const result = await cartService.createEmptyCart(userId);
 
       expect(httpService.axiosRef.post).toHaveBeenCalledWith(
-        `${cartService.apiProductsUrl}/carts/user-id/${userId}`,
+        `${cartService.apiCartUrl}/carts/user-id/${userId}`,
       );
 
       expect(result).toEqual(response);
@@ -58,7 +58,7 @@ describe('CartService', () => {
       const result = await cartService.getCart(cartId, userId);
 
       expect(httpService.axiosRef.get).toHaveBeenCalledWith(
-        `${cartService.apiProductsUrl}/carts/cart-id/${cartId}/user-id/${userId}`,
+        `${cartService.apiCartUrl}/carts/cart-id/${cartId}/user-id/${userId}`,
       );
 
       expect(result).toEqual(response);
@@ -88,7 +88,7 @@ describe('CartService', () => {
       };
 
       jest
-        .spyOn(httpService.axiosRef, 'post')
+        .spyOn(httpService.axiosRef, 'put')
         .mockResolvedValue(Promise.resolve({ data: response }));
 
       const result = await cartService.addProductFromCart(
@@ -97,8 +97,8 @@ describe('CartService', () => {
         productDTO,
       );
 
-      expect(httpService.axiosRef.post).toHaveBeenCalledWith(
-        `${cartService.apiProductsUrl}/carts/cart-id/${cartId}/user-id/${userId}`,
+      expect(httpService.axiosRef.put).toHaveBeenCalledWith(
+        `${cartService.apiCartUrl}/carts/cart-id/${cartId}/user-id/${userId}`,
         productDTO,
       );
 
@@ -115,7 +115,7 @@ describe('CartService', () => {
       };
 
       jest
-        .spyOn(httpService.axiosRef, 'post')
+        .spyOn(httpService.axiosRef, 'put')
         .mockRejectedValue(new Error('error'));
 
       await expect(
@@ -142,7 +142,7 @@ describe('CartService', () => {
       );
 
       expect(httpService.axiosRef.delete).toHaveBeenCalledWith(
-        `${cartService.apiProductsUrl}/carts/cart-id/${cartId}/user-id/${userId}/product-id/${productId}`,
+        `${cartService.apiCartUrl}/carts/cart-id/${cartId}/user-id/${userId}/product-id/${productId}`,
       );
 
       expect(result).toEqual(response);

@@ -142,7 +142,7 @@ describe('ShoppingCartsService', () => {
       );
 
       expect(cartRepository.findOne).toHaveBeenCalledWith({
-        where: { id: cartId, userId: userId },
+        where: { id: cartId },
         relations: ['cartProducts'],
       });
       expect(cartProductRepository.create).toHaveBeenCalledWith({
@@ -172,7 +172,7 @@ describe('ShoppingCartsService', () => {
         service.addProductFromCart(cartId, userId, productDTO),
       ).rejects.toThrowError(NotFoundException);
       expect(cartRepository.findOne).toHaveBeenCalledWith({
-        where: { id: cartId, userId: userId },
+        where: { id: cartId },
         relations: ['cartProducts'],
       });
     });
@@ -213,7 +213,7 @@ describe('ShoppingCartsService', () => {
       );
 
       expect(cartRepository.findOne).toHaveBeenCalledWith({
-        where: { id: cartId, userId: userId },
+        where: { id: cartId },
         relations: ['cartProducts'],
       });
       expect(cartProductRepository.findOne).toHaveBeenCalledWith({
@@ -237,7 +237,7 @@ describe('ShoppingCartsService', () => {
         service.deleteProductFromCart(cartId, userId, productId),
       ).rejects.toThrowError(NotFoundException);
       expect(cartRepository.findOne).toHaveBeenCalledWith({
-        where: { id: cartId, userId: userId },
+        where: { id: cartId },
         relations: ['cartProducts'],
       });
     });
@@ -268,7 +268,7 @@ describe('ShoppingCartsService', () => {
         service.deleteProductFromCart(cartId, userId, productId),
       ).rejects.toThrowError(NotFoundException);
       expect(cartRepository.findOne).toHaveBeenCalledWith({
-        where: { id: cartId, userId: userId },
+        where: { id: cartId },
         relations: ['cartProducts'],
       });
       expect(cartProductRepository.findOne).toHaveBeenCalledWith({
